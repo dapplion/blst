@@ -138,3 +138,11 @@ jobs:
               )
            fi
         fi
+    - name: worker_threads
+      run: |
+        node_js=bindings/node.js
+        if [ -f $node_js/blst.hpp.ts -a -f $node_js/blst.node ]; then
+            ( cd $node_js;
+              env NODE_PATH=.: node runnable.threads.js;
+            )
+        fi
